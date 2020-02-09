@@ -2,11 +2,11 @@ package com.nacho.collections.stack;
 
 public interface MyStack<T> {
 
-	void push(final T valueToAdd);
+  void push(final T valueToAdd);
 
-	T pop();
+  T pop();
 
-	T peek();
+  T peek();
 
-	void print();
+  void print();
 }

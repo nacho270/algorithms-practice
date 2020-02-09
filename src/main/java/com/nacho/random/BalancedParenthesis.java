@@ -14,29 +14,29 @@ import java.util.Stack;
  */
 public class BalancedParenthesis {
 
-	private static boolean isBalanced(final String str) {
-		final Stack<Character> stack = new Stack<>();
-		for (int i = 0; i < str.length(); i++) {
-			if (str.charAt(i) == '(' || str.charAt(i) == '[' || str.charAt(i) == '{') {
-				stack.push(str.charAt(i));
-			} else {
-				final Character lastOpenElement = stack.peek();
-				if (isOpposite(lastOpenElement, str.charAt(i))) {
-					stack.pop();
-				}
-			}
-		}
-		return stack.isEmpty();
-	}
+  private static boolean isBalanced(final String str) {
+    final Stack<Character> stack = new Stack<>();
+    for (int i = 0; i < str.length(); i++) {
+      if (str.charAt(i) == '(' || str.charAt(i) == '[' || str.charAt(i) == '{') {
+        stack.push(str.charAt(i));
+      } else {
+        final Character lastOpenElement = stack.peek();
+        if (isOpposite(lastOpenElement, str.charAt(i))) {
+          stack.pop();
+        }
+      }
+    }
+    return stack.isEmpty();
+  }
 
-	private static boolean isOpposite(final Character lastChar, final Character ch) {
-		return lastChar.equals('(') && ch.equals(')') || //
-				lastChar.equals('[') && ch.equals(']') || //
-				lastChar.equals('{') && ch.equals('}');
-	}
+  private static boolean isOpposite(final Character lastChar, final Character ch) {
+    return lastChar.equals('(') && ch.equals(')') || //
+        lastChar.equals('[') && ch.equals(']') || //
+        lastChar.equals('{') && ch.equals('}');
+  }
 
-	public static void main(final String[] args) {
-		System.out.println(isBalanced("[()]{}{[()()]()}"));
-		System.out.println(isBalanced("[(])"));
-	}
+  public static void main(final String[] args) {
+    System.out.println(isBalanced("[()]{}{[()()]()}"));
+    System.out.println(isBalanced("[(])"));
+  }
 }

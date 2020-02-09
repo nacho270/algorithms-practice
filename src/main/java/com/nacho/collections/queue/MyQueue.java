@@ -2,12 +2,12 @@ package com.nacho.collections.queue;
 
 public interface MyQueue<T> {
 
-	void enque(final T valueToAdd);
+  void enque(final T valueToAdd);
 
-	T poll();
+  T poll();
 
-	T peek();
+  T peek();
 
-	void print();
+  void print();
 
 }
