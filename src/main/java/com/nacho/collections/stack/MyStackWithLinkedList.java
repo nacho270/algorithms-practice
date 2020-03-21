@@ -2,46 +2,35 @@ package com.nacho.collections.stack;
 
 public class MyStackWithLinkedList<T> implements MyStack<T> {
 
-  private Node root;
+  private Node head;
 
   @Override
   public void push(final T valueToAdd) {
-    if (root == null) {
-      root = new Node(valueToAdd);
+    if (head == null) {
+      head = new Node(valueToAdd);
       return;
     }
-    Node temp = root;
-    while (temp.next != null) {
-      temp = temp.next;
-    }
-    temp.next = new Node(valueToAdd);
+    final Node oldHead = head;
+    head = new Node(valueToAdd);
+    head.next = oldHead;
   }
 
   @Override
   public T pop() {
-    Node temp = root;
-    while (temp.next.next != null) {
-      temp = temp.next;
-    }
-
-    final T value = temp.next.value;
-    temp.next = null;
+    final T value = head.value;
+    head = head.next;
     return value;
   }
 
   @Override
   public T peek() {
-    Node temp = root;
-    while (temp.next != null) {
-      temp = temp.next;
-    }
-    return temp.value;
+    return head.value;
   }
 
   @Override
   public void print() {
     System.out.println("=======");
-    Node temp = root;
+    Node temp = head;
     while (temp != null) {
       System.out.println(temp.value);
       temp = temp.next;

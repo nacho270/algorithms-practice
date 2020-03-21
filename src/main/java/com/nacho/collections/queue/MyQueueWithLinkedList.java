@@ -2,44 +2,45 @@ package com.nacho.collections.queue;
 
 public class MyQueueWithLinkedList<T> implements MyQueue<T> {
 
-  private Node root;
+  private Node first;
+  private Node last;
 
   @Override
   public void enque(final T valueToAdd) {
-    if (root == null) {
-      root = new Node(valueToAdd);
+    final Node newNode = new Node(valueToAdd);
+    if (first == null) {
+      first = newNode;
+      last = newNode;
       return;
     }
-    final Node newNode = new Node(valueToAdd);
-    newNode.next = root;
-    root = newNode;
+    newNode.next = last;
+    last = newNode;
   }
 
   @Override
   public T poll() {
-    Node temp = root;
-    while (temp.next.next != null) {
-      temp = temp.next;
+    final T value = first.value;
+    Node runner = last;
+    while (runner.next != null) {
+      if (runner.next.next == null) {
+        break;
+      }
+      runner = runner.next;
     }
-
-    final T value = temp.next.value;
-    temp.next = null;
+    runner.next = null;
+    first = runner;
     return value;
   }
 
   @Override
   public T peek() {
-    Node temp = root;
-    while (temp.next != null) {
-      temp = temp.next;
-    }
-    return temp.value;
+    return first.value;
   }
 
   @Override
   public void print() {
     System.out.println("=======");
-    Node temp = root;
+    Node temp = last;
     while (temp != null) {
       System.out.println(temp.value);
       temp = temp.next;

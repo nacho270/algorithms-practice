@@ -3,7 +3,7 @@ package com.nacho.collections.stack;
 public class MainMyStack {
 
   public static void main(final String[] args) {
-    final MyStack<Integer> stack = new MyStackWithArray<>();
+    final MyStack<Integer> stack = new MyStackWithLinkedList<>();
     stack.push(5);
     stack.push(10);
     stack.push(200);
