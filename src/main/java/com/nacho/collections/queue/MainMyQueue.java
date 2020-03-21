@@ -3,7 +3,7 @@ package com.nacho.collections.queue;
 public class MainMyQueue {
 
   public static void main(final String[] args) {
-    final MyQueue<Integer> stack = new MyQueueWithLinkedList<>();
+    final MyQueue<Integer> stack = new MyQueueWithLinkedOtherPOVList<>();
     stack.enque(5);
     stack.enque(10);
     stack.enque(200);

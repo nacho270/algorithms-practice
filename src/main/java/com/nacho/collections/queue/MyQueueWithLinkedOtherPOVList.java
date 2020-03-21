@@ -1,13 +1,14 @@
 package com.nacho.collections.queue;
 
 /**
- * Implemented like
+ * Other point of view
+ *
+ * /** Implemented like
  *
  * Last ----------- first <br>
- * - 4 ---> 3 -> 2 -> 1
- *
+ * - 4 <- 3 <- 2 <- 1
  */
-public class MyQueueWithLinkedList<T> implements MyQueue<T> {
+public class MyQueueWithLinkedOtherPOVList<T> implements MyQueue<T> {
 
   private Node first;
   private Node last;
@@ -15,27 +16,18 @@ public class MyQueueWithLinkedList<T> implements MyQueue<T> {
   @Override
   public void enque(final T valueToAdd) {
     final Node newNode = new Node(valueToAdd);
-    if (first == null) {
-      first = newNode;
-      last = newNode;
+    if (last == null) { // empty
+      last = first = newNode;
       return;
     }
-    newNode.next = last;
+    last.next = newNode;
     last = newNode;
   }
 
   @Override
   public T poll() {
     final T value = first.value;
-    Node runner = last;
-    while (runner.next != null) {
-      if (runner.next.next == null) {
-        break;
-      }
-      runner = runner.next;
-    }
-    runner.next = null;
-    first = runner;
+    first = first.next;
     if (first == null) {
       last = null;
     }
@@ -50,7 +42,7 @@ public class MyQueueWithLinkedList<T> implements MyQueue<T> {
   @Override
   public void print() {
     System.out.println("=======");
-    Node temp = last;
+    Node temp = first;
     while (temp != null) {
       System.out.println(temp.value);
       temp = temp.next;
