@@ -31,8 +31,25 @@ public class RotateLeft {
     return rotatedArray;
   }
 
+  static int[] rotLeft2(final int[] a, final int d) {
+    final int rotations = d % a.length;
+    if (a == null || rotations == 0) {
+      return a;
+    }
+    final int[] rotatedArray = new int[a.length];
+    for (int i = 0; i < a.length; i++) {
+      final int shift = i - rotations;
+      if (shift < 0) {
+        rotatedArray[a.length - Math.abs(shift)] = a[i];
+      } else {
+        rotatedArray[shift] = a[i];
+      }
+    }
+    return rotatedArray;
+  }
+
   public static void main(final String[] args) {
-    final int[] rotLeft = rotLeft(new int[] { 1, 2, 3, 4, 5 }, 4);
+    final int[] rotLeft = rotLeft2(new int[] { 1, 2, 3, 4, 5 }, 4);
     for (int i = 0; i < rotLeft.length; i++) {
       System.out.println(rotLeft[i]);
     }
