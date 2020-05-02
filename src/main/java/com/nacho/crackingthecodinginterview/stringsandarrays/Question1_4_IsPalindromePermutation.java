@@ -23,11 +23,11 @@ public class Question1_4_IsPalindromePermutation {
     return frecuencies;
   }
 
-  private static boolean isPaliindromePermutation(final String str) {
+  private static boolean isPalindromePermutation(final String str) {
     final int[] frecuencies = buildFrecuencyTable(str);
     boolean oddFound = false;
-    for (final int frecuencie : frecuencies) {
-      if (frecuencie % 2 == 1) {
+    for (final int frecuency : frecuencies) {
+      if (frecuency % 2 == 1) {
         if (oddFound) {
           return false;
         }
@@ -38,12 +38,12 @@ public class Question1_4_IsPalindromePermutation {
   }
 
   public static void main(final String[] args) {
-    System.out.println("Is palindrome permutation(paaaiiijj): " + isPaliindromePermutation("paaaiiijj"));
-    System.out.println("Is palindrome permutation(kkaa): " + isPaliindromePermutation("kkaa"));
-    System.out.println("Is palindrome permutation(kkaoa): " + isPaliindromePermutation("kkaoa"));
-    System.out.println("Is palindrome permutation(menem): " + isPaliindromePermutation("menem"));
-    System.out.println("Is palindrome permutation(neuquen): " + isPaliindromePermutation("neuquen"));
-    System.out.println("Is palindrome permutation(casa): " + isPaliindromePermutation("casa"));
+    System.out.println("Is palindrome permutation(paaaiiijj): " + isPalindromePermutation("paaaiiijj"));
+    System.out.println("Is palindrome permutation(kkaa): " + isPalindromePermutation("kkaa"));
+    System.out.println("Is palindrome permutation(kkaoa): " + isPalindromePermutation("kkaoa"));
+    System.out.println("Is palindrome permutation(menem): " + isPalindromePermutation("menem"));
+    System.out.println("Is palindrome permutation(neuquen): " + isPalindromePermutation("neuquen"));
+    System.out.println("Is palindrome permutation(casa): " + isPalindromePermutation("casa"));
   }
 
 }
